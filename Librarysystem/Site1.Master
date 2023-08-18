@@ -52,7 +52,6 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Terms</a>
                         </li>
-
                     </ul>
 
                     <ul class="navbar-nav">
@@ -115,7 +114,8 @@
             <div id="footer2" class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <p style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks" href="#" target="_blank">Simple Snippets</a></p>
+                    <p style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks" href="#" target="_blank">Simple Snippets</a></p>
+
                     </div>
                 </div>
             </div>
