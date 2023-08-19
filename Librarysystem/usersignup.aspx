@@ -16,9 +16,7 @@
                   <div class="row">
                      <div class="col">
                         <center>
-                           <h4>Your Profile</h4>
-                           <span>Account Status - </span>
-                           <asp:Label class="badge badge-pill badge-info" ID="Label1" runat="server" Text="Your status"></asp:Label>
+                           <h4>Member Sign Up</h4>
                         </center>
                      </div>
                   </div>
@@ -123,22 +121,17 @@
                      </div>
                   </div>
                   <div class="row">
-                     <div class="col-md-4">
+                     <div class="col-md-6">
                         <label>User ID</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox8" runat="server" placeholder="User ID" ReadOnly="True"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="TextBox8" runat="server" placeholder="User ID" ReadOnly="False"></asp:TextBox>
                         </div>
                      </div>
-                     <div class="col-md-4">
-                        <label>Old Password</label>
+                     
+                     <div class="col-md-6">
+                        <label> Password</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox9" runat="server" placeholder="Email ID" TextMode="Password" ReadOnly="True"></asp:TextBox>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <label>New Password</label>
-                        <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox10" runat="server" placeholder="Email ID" TextMode="Password"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="TextBox9" runat="server" placeholder="Email ID" TextMode="Password" ></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -146,16 +139,17 @@
                      <div class="col-8 mx-auto">
                         <center>
                            <div class="form-group">
-                              <asp:Button class="btn btn-primary btn-block btn-lg" ID="Button1" runat="server" Text="Update" />
+                              <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Sign Up" OnClick="Button1_Click" />
                            </div>
                         </center>
                      </div>
                   </div>
                </div>
             </div>
-            <a href="homepage.aspx"><< Back to Home</a><br><br>
+            <a href="homepage.aspx"><< Back to Home/a><br><br>
          </div>
          
       </div>
    </div>
+    </a>
 </asp:Content>
