@@ -13,7 +13,7 @@ namespace Librarysystem
         {
             try
             {
-                if (Session["role"].Equals(""))
+                if (Session["role"]==null)
                 {
                     LinkButton1.Visible = true; // user login link button
                     LinkButton2.Visible = true; // sign up link button
