@@ -44,7 +44,7 @@
                   </div>
                   <div class="row">
                      <div class="col-4">
-                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" OnClick="Button2_Click" />
                      </div>
                      <div class="col-4">
                         <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
@@ -55,7 +55,7 @@
                   </div>
                </div>
             </div>
-            <a href="homepage.aspx"><< Back to Home</a><br>
+            <a href="homepage.aspx"><< Back to Home/a><br>
             <br>
          </div>
          <div class="col-md-7">
