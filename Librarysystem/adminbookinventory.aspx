@@ -1,9 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="adminbookinventory.aspx.cs" Inherits="Librarysystem.adminbookinventory" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+   <script type="text/javascript">
+       $(document).ready(function () {
+           $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+       });
+
+       function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+
+               reader.onload = function (e) {
+                   $('#imgview').attr('src', e.target.result);
+               };
+
+              // reader.readAsDataURL(input.files[0]);
+           }
+       }
+   </script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <div class="container-fluid">
       <div class="row">
-         <div class="col-md-7">
+         <div class="col-md-5">
             <div class="card">
                <div class="card-body">
                   <div class="row">
@@ -16,7 +34,7 @@
                   <div class="row">
                      <div class="col">
                         <center>
-                           <img width="100px" src="imgs/books.png" />
+                           <img id="imgview" Height="150px" Width="100px" src="book_inventory/books1.jpg" />
                         </center>
                      </div>
                   </div>
@@ -27,20 +45,20 @@
                   </div>
                   <div class="row">
                      <div class="col">
-                        <asp:FileUpload class="form-control" ID="FileUpload1" runat="server" />
+                        <asp:FileUpload onchange="readURL(this);" class="form-control" ID="FileUpload1" runat="server" />
                      </div>
                   </div>
                   <div class="row">
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                         <label>Book ID</label>
                         <div class="form-group">
                            <div class="input-group">
-                              <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Member ID"></asp:TextBox>
-                              <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                              <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Book ID"></asp:TextBox>
+                              <asp:Button class="form-control btn btn-primary" ID="Button4" runat="server" Text="Go" OnClick="Button4_Click" />
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-9">
+                     <div class="col-md-8">
                         <label>Book Name</label>
                         <div class="form-group">
                            <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Book Name"></asp:TextBox>
@@ -165,13 +183,13 @@
                   </div>
                   <div class="row">
                      <div class="col-4">
-                        <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                        <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" OnClick="Button1_Click" />
                      </div>
                      <div class="col-4">
-                        <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
+                        <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" OnClick="Button3_Click" />
                      </div>
                      <div class="col-4">
-                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
+                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" OnClick="Button2_Click" />
                      </div>
                   </div>
                </div>
@@ -179,7 +197,7 @@
             <a href="homepage.aspx"><< Back to Home</a><br>
             <br>
          </div>
-         <div class="col-md-5">
+         <div class="col-md-7">
             <div class="card">
                <div class="card-body">
                   <div class="row">
@@ -196,7 +214,21 @@
                   </div>
                   <div class="row">
                      <div class="col">
-                        <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>
+                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elibraryDBConnectionString %>" SelectCommand="SELECT [book_id], [book_name], [genre], [author_name], [publisher_name], [publish_date], [book_cost], [language], [no_of_pages] FROM [book_master_tbl]"></asp:SqlDataSource>
+                        <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="book_id" DataSourceID="SqlDataSource1">
+                           <Columns>
+                              <asp:BoundField DataField="book_id" HeaderText="book_id" ReadOnly="True" SortExpression="book_id" >
+                              </asp:BoundField>
+                               <asp:BoundField DataField="book_name" HeaderText="book_name" SortExpression="book_name" />
+                               <asp:BoundField DataField="genre" HeaderText="genre" SortExpression="genre" />
+                               <asp:BoundField DataField="author_name" HeaderText="author_name" SortExpression="author_name" />
+                               <asp:BoundField DataField="publisher_name" HeaderText="publisher_name" SortExpression="publisher_name" />
+                               <asp:BoundField DataField="publish_date" HeaderText="publish_date" SortExpression="publish_date" />
+                               <asp:BoundField DataField="book_cost" HeaderText="book_cost" SortExpression="book_cost" />
+                               <asp:BoundField DataField="language" HeaderText="language" SortExpression="language" />
+                               <asp:BoundField DataField="no_of_pages" HeaderText="no_of_pages" SortExpression="no_of_pages" />
+                           </Columns>
+                        </asp:GridView>
                      </div>
                   </div>
                </div>
