@@ -31,21 +31,22 @@ namespace Librarysystem
         // add button
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //    if (checkIfBookExists())
-            //  {
-            //       Response.Write("<script>alert('Book Already Exists, try some other Book ID');</script>");
-            //   }
-            //   else
-            //   { 
-           // Response.Write("<script>alert('run')</script>");
-           addNewBook();
-           // }
+                if (checkIfBookExists())
+              {
+                   Response.Write("<script>alert('Book Already Exists, try some other Book ID');</script>");
+               }
+               else
+               { 
+                // Response.Write("<script>alert('run')</script>");
+                addNewBook();
+               }
          }
         // update button
         protected void Button3_Click(object sender, EventArgs e)
         {
             updateBookByID();
         }
+
         // delete button
         protected void Button2_Click(object sender, EventArgs e)
         {
